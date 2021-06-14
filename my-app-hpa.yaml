@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-cont
+        image: raghav18/my_test_image 
+        ports:
+        - containerPort: 80
+        resources:
+         limits:
+           cpu: 300m
+           memory: 200Mi
+         requests:
+           cpu: 150m
+           memory: 100Mi
